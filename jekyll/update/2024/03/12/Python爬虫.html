@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python爬虫 | YuPengStaticPage</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Python爬虫" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="背景：" />
+<meta property="og:description" content="背景：" />
+<link rel="canonical" href="http://localhost:4000/jekyll/update/2024/03/12/Python%E7%88%AC%E8%99%AB.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/update/2024/03/12/Python%E7%88%AC%E8%99%AB.html" />
+<meta property="og:site_name" content="YuPengStaticPage" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-03-12T13:56:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Python爬虫" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-03-12T13:56:00+08:00","datePublished":"2024-03-12T13:56:00+08:00","description":"背景：","headline":"Python爬虫","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2024/03/12/Python%E7%88%AC%E8%99%AB.html"},"url":"http://localhost:4000/jekyll/update/2024/03/12/Python%E7%88%AC%E8%99%AB.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="YuPengStaticPage" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">YuPengStaticPage</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Python爬虫</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-03-12T13:56:00+08:00" itemprop="datePublished">Mar 12, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>背景：</strong></p>
+
+<p><strong>PySpider</strong>：一个国人编写的强大的网络爬虫系统并带有强大的WebUI。采用Python语言编写，分布式架构，支持多种数据库后端，强大的WebUI支持脚本编辑器，任务监视器，项目管理器以及结果查看器。在线示例： <strong>http://demo.pyspider.org/</strong></p>
+
+<p><strong>官方文档： http://docs.pyspider.org/en/latest/</strong></p>
+
+<p><strong>Github :  https://github.com/binux/pyspider</strong></p>
+
+<p>本文爬虫代码 Github 地址：<strong>https://github.com/zhisheng17/Python-Projects/blob/master/v2ex/V2EX.py</strong></p>
+
+<!-- more -->
+
+<hr />
+
+<p>说了这么多，我们还是来看正文吧！</p>
+
+<p><strong>前提:</strong> 你已经安装好了Pyspider 和 MySQL-python（保存数据）</p>
+
+<p>如果你还没安装的话，请看看我的前一篇文章，防止你也走弯路。</p>
+
+<ol>
+  <li>
+    <p><a href="http://blog.csdn.net/tzs_1041218129/article/details/52877949"><strong>Pyspider 框架学习时走过的一些坑</strong></a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/tzs_1041218129/article/details/52853465"><strong>HTTP 599: SSL certificate problem: unable to get local issuer certificate错误</strong></a></p>
+  </li>
+</ol>
+
+<p>我所遇到的一些错误：</p>
+
+<p>首先，<strong>本爬虫目标</strong>：使用 Pyspider 框架爬取 <a href="www.v2ex.com">V2EX</a> 网站的帖子中的问题和内容，然后将爬取的数据保存在本地。</p>
+
+<p>V2EX 中大部分的帖子查看是不需要登录的，当然也有些帖子是需要登陆后才能够查看的。（因为后来爬取的时候发现一直 error ，查看具体原因后才知道是需要登录的才可以查看那些帖子的）所以我觉得没必要用到 Cookie，当然如果你非得要登录，那也很简单，简单地方法就是添加你登录后的 cookie 了。</p>
+
+<p>我们在 https://www.v2ex.com/ 扫了一遍，发现并没有一个列表能包含所有的帖子，只能退而求其次，通过抓取分类下的所有的标签列表页，来遍历所有的帖子： https://www.v2ex.com/?tab=tech 然后是 https://www.v2ex.com/go/programmer  最后每个帖子的详情地址是 （举例）： https://www.v2ex.com/t/314683#reply1</p>
+
+<p><strong>创建一个项目</strong></p>
+
+<p>在 pyspider 的 dashboard 的右下角，点击 “Create” 按钮</p>
+
+<p>替换 on_start 函数的 self.crawl 的 URL：</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@every</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="sh">'</span><span class="s">https://www.v2ex.com/</span><span class="sh">'</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">index_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>self.crawl 告诉 pyspider 抓取指定页面，然后使用 callback 函数对结果进行解析。</li>
+    <li>@every) 修饰器，表示 on_start 每天会执行一次，这样就能抓到最新的帖子了。</li>
+    <li>validate_cert=False 一定要这样，否则会报 HTTP 599: SSL certificate problem: unable to get local issuer certificate错误</li>
+  </ul>
+</blockquote>
+
+<p><strong>首页：</strong></p>
+
+<p>点击绿色的 run 执行，你会看到 follows 上面有一个红色的 1，切换到 follows 面板，点击绿色的播放按钮：</p>
+
+<p>第二张截图一开始是出现这个问题了，解决办法看前面写的文章，后来问题就不再会出现了。</p>
+
+<p><br /></p>
+
+<p><strong>Tab列表页:</strong></p>
+
+<p>在 tab 列表页 中，我们需要提取出所有的主题列表页 的 URL。你可能已经发现了，sample handler 已经提取了非常多大的 URL</p>
+
+<p>代码：</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">index_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/?tab=</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">tab_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>由于帖子列表页和 tab列表页长的并不一样，在这里新建了一个 callback 为 self.tab_page</li>
+    <li>@config(age=10 * 24 * 60 * 60) 在这表示我们认为 10 天内页面有效，不会再次进行更新抓取</li>
+  </ul>
+</blockquote>
+
+<p><strong>Go列表页:</strong></p>
+
+<p>代码：</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">tab_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/go/</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">board_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>帖子详情页（T）:</strong></p>
+
+<p>你可以看到结果里面出现了一些reply的东西，对于这些我们是可以不需要的，我们可以去掉。</p>
+
+<p>同时我们还需要让他自己实现自动翻页功能。</p>
+
+<p>代码：</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">board_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/t/</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span>
+            <span class="k">if</span> <span class="n">url</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">#reply</span><span class="sh">'</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">url</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">#</span><span class="sh">'</span><span class="p">)]</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">detail_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a.page_normal</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">board_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1">#实现自动翻页功能
+</span></code></pre></div></div>
+
+<p>代码：</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@config</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">detail_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">h1</span><span class="sh">'</span><span class="p">).</span><span class="nf">text</span><span class="p">()</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">div.topic_content</span><span class="sh">'</span><span class="p">).</span><span class="nf">html</span><span class="p">().</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'"'</span><span class="p">,</span> <span class="sh">'</span><span class="se">\\</span><span class="sh">"'</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">add_question</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>  <span class="c1">#插入数据库
+</span>        <span class="k">return</span> <span class="p">{</span>
+            <span class="sh">"</span><span class="s">url</span><span class="sh">"</span><span class="p">:</span> <span class="n">response</span><span class="p">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">title</span><span class="sh">"</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+
+<p>插入数据库的话，需要我们在之前定义一个add_question函数。</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#连接数据库
+</span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="sh">'</span><span class="s">localhost</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">root</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">root</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">wenda</span><span class="sh">'</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="sh">'</span><span class="s">utf8</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_question</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">cursor</span><span class="p">()</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="sh">'</span><span class="s">insert into question(title, content, user_id, created_date, comment_count) values (</span><span class="sh">"</span><span class="s">%s</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="s">%s</span><span class="sh">"</span><span class="s">,%d, %s, 0)</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">,</span> <span class="sh">'</span><span class="s">now()</span><span class="sh">'</span><span class="p">);</span>   <span class="c1">#插入数据库的SQL语句
+</span>            <span class="k">print</span> <span class="n">sql</span>
+            <span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+            <span class="k">print</span> <span class="n">cursor</span><span class="p">.</span><span class="n">lastrowid</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="nb">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">rollback</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>查看爬虫运行结果：</p>
+
+<blockquote>
+  <ol>
+    <li>先debug下，再调成running。pyspider框架在windows下的bug</li>
+    <li>设置跑的速度，建议不要跑的太快，否则很容易被发现是爬虫的，人家就会把你的IP给封掉的</li>
+    <li>查看运行工作</li>
+    <li>查看爬取下来的内容</li>
+  </ol>
+</blockquote>
+
+<p>然后再本地数据库GUI软件上查询下就可以看到数据已经保存到本地了。</p>
+
+<p>自己需要用的话就可以导入出来了。</p>
+
+<p>在开头我就告诉大家爬虫的代码了，如果详细的看看那个project，你就会找到我上传的爬取数据了。（仅供学习使用，切勿商用！）</p>
+
+<p>当然你还会看到其他的爬虫代码的了，如果你觉得不错可以给个 Star，或者你也感兴趣的话，你可以fork我的项目，和我一起学习，这个项目长期更新下去。</p>
+
+<p><strong>最后：</strong></p>
+
+<p>代码：</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># created by 10412
+# !/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# Created on 2016-10-20 20:43:00
+# Project: V2EX
+</span>
+<span class="kn">from</span> <span class="n">pyspider.libs.base_handler</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="n">re</span>
+<span class="kn">import</span> <span class="n">random</span>
+<span class="kn">import</span> <span class="n">MySQLdb</span>
+
+<span class="k">class</span> <span class="nc">Handler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="n">crawl_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="sh">'</span><span class="s">localhost</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">root</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">root</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">wenda</span><span class="sh">'</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="sh">'</span><span class="s">utf8</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_question</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">cursor</span><span class="p">()</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="sh">'</span><span class="s">insert into question(title, content, user_id, created_date, comment_count) values (</span><span class="sh">"</span><span class="s">%s</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="s">%s</span><span class="sh">"</span><span class="s">,%d, %s, 0)</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">,</span> <span class="sh">'</span><span class="s">now()</span><span class="sh">'</span><span class="p">);</span>
+            <span class="k">print</span> <span class="n">sql</span>
+            <span class="n">cursor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+            <span class="k">print</span> <span class="n">cursor</span><span class="p">.</span><span class="n">lastrowid</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="nb">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="nf">rollback</span><span class="p">()</span>
+
+
+    <span class="nd">@every</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="sh">'</span><span class="s">https://www.v2ex.com/</span><span class="sh">'</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">index_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">index_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/?tab=</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">tab_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+    <span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">tab_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/go/</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">board_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+    <span class="nd">@config</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">board_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a[href^=</span><span class="sh">"</span><span class="s">https://www.v2ex.com/t/</span><span class="sh">"</span><span class="s">]</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span>
+            <span class="k">if</span> <span class="n">url</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">#reply</span><span class="sh">'</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">url</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">#</span><span class="sh">'</span><span class="p">)]</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">detail_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">a.page_normal</span><span class="sh">'</span><span class="p">).</span><span class="nf">items</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">crawl</span><span class="p">(</span><span class="n">each</span><span class="p">.</span><span class="n">attr</span><span class="p">.</span><span class="n">href</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">board_page</span><span class="p">,</span> <span class="n">validate_cert</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+    <span class="nd">@config</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">detail_page</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">h1</span><span class="sh">'</span><span class="p">).</span><span class="nf">text</span><span class="p">()</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">doc</span><span class="p">(</span><span class="sh">'</span><span class="s">div.topic_content</span><span class="sh">'</span><span class="p">).</span><span class="nf">html</span><span class="p">().</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'"'</span><span class="p">,</span> <span class="sh">'</span><span class="se">\\</span><span class="sh">"'</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">add_question</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>  <span class="c1">#插入数据库
+</span>        <span class="k">return</span> <span class="p">{</span>
+            <span class="sh">"</span><span class="s">url</span><span class="sh">"</span><span class="p">:</span> <span class="n">response</span><span class="p">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">title</span><span class="sh">"</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+        <span class="p">}</span>
+
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/jekyll/update/2024/03/12/Python%E7%88%AC%E8%99%AB.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">YuPengStaticPage</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">YuPengStaticPage</li><li><a class="u-email" href="mailto:suki032516@gmail.com">suki032516@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/suki032516"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">suki032516</span></a></li><li><a href="https://www.twitter.com/suki032516"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">suki032516</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>一个简单的静态网页</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
